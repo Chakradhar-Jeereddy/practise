@@ -6,12 +6,20 @@ pipeline{
  }
  environment{
  course = "jenkins"
+ apiVersion = ""
  }
  options{
   timeout(time: 11, unit: 'SECONDS')
   disableConcurrentBuilds()
  }
  stages{
+    stage('Read json file'){
+    steps{
+    def packagejson = readJSON file: "package.json"
+    apiVersion = packagejson.version
+    echo "apiversion: ${apiVersion}"
+    }
+  }
   stage('Build'){
     steps{
     echo "Building"
