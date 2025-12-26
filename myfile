@@ -24,8 +24,10 @@ pipeline{
   }
   stage('Build catalogue image'){
     steps{
+    sh"""
     docker build -i chakradhar05/catalogue:${apiVersion} .
     docker images
+    """
     }
   }
   stage('Test'){
