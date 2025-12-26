@@ -6,7 +6,6 @@ pipeline{
  }
  environment{
  course = "jenkins"
- duration = "120hrs"
  }
  options{
   timeout(time: 11, unit: 'SECONDS')
