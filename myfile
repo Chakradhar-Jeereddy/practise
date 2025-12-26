@@ -42,11 +42,12 @@ pipeline{
   }
   stage('Quality Gate') {
    steps {
-         // Wait for Quality Gate, fail build if needed
-         timeout(time: 1, unit: 'HOURS') {
-         waitForQualityGate abortPipeline: true
+      // Wait for Quality Gate, fail build if needed
+      timeout(time: 1, unit: 'HOURS') {
+        waitForQualityGate abortPipeline: true
+      }
    }
-           
+  }      
   stage('Build catalogue image'){
     steps{
       withAWS(region:'us-east-1',credentials:'aws-ecr') {
