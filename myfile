@@ -29,7 +29,7 @@ pipeline{
     }
   }
  }
- options{
+ post{
   always{
    cleanWs()
    echo "Always say hi"
