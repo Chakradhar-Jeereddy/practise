@@ -28,6 +28,15 @@ pipeline{
      }
     }
   }
+  stage('Sonar Code Analysis') {
+   steps {
+                script {
+                    withSonarQubeEnv('sonar-server') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+   }
+  }
   stage('Build catalogue image'){
     steps{
       withAWS(region:'us-east-1',credentials:'aws-ecr') {
