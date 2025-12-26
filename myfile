@@ -7,6 +7,9 @@ pipeline{
  environment{
  course = "jekins"
  }
+ options{
+  timeout(time: 10, unit: 'SECONDS')
+ }
  stages{
   stage('Build'){
     steps{
@@ -21,6 +24,7 @@ pipeline{
     steps{
     echo "Testing"
     echo "${name}"
+    sleep 100
     }
   }
   stage('Deploy'){
