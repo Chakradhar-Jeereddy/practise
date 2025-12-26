@@ -4,21 +4,44 @@ pipeline{
   label "agent"
   }
  }
+ environment{
+ course = "jekins"
+ }
  stages{
   stage('Build'){
     steps{
     echo "Building"
+    echo "${course}"
     }
   }
   stage('Test'){
+    environment{
+    name = "chakras testing"
+    }
     steps{
     echo "Testing"
+    echo "${name}"
     }
   }
   stage('Deploy'){
     steps{
     echo "Deploying"
     }
+  }
+ }
+ option{
+  always{
+   cleanWs()
+   echo "Always say hi"
+  }
+  success{
+  echo "Passed the deployment"
+  }
+  failure{
+  echo "Deployment failed"
+  }
+  aborted{
+  echo "deployment aborted"
   }
  }
 }
