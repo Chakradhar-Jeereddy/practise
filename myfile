@@ -11,6 +11,9 @@ pipeline{
  environment{
  course = "jenkins"
  apiVersion = ""
+ acc_id = "406682759639"
+ project = "chakra"
+ component = "catalogue"
  }
  options{
   disableConcurrentBuilds()
@@ -27,10 +30,11 @@ pipeline{
   }
   stage('Build catalogue image'){
     steps{
-    sh"""
-    docker build -t chakradhar05/catalogue:${apiVersion} .
-    docker images
-    """
+      script{
+      aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${acc_id}.dkr.ecr.us-east-1.amazonaws.com
+      docker build -t ${acc_id}.dkr.ecr.us-east-1.amazonaws.com/${project}/${component}:${apiVersion} .
+      docker push ${acc_id}.dkr.ecr.us-east-1.amazonaws.com/${project}/${component}:${apiVersion}
+      }
     }
   }
   stage('Test'){
