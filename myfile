@@ -4,6 +4,10 @@ pipeline{
   label "agent"
   }
  }
+ parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Chakradhar', description: 'Who should I say hello to?')
+        booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
+ }
  environment{
  course = "jenkins"
  apiVersion = ""
@@ -39,6 +43,9 @@ pipeline{
     }
   }
   stage('Deploy'){
+    when{
+    expression { params.Deploy == "true" }
+    }
     steps{
     echo "Deploying"
     }
