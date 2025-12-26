@@ -9,7 +9,6 @@ pipeline{
  apiVersion = ""
  }
  options{
-  timeout(time: 11, unit: 'SECONDS')
   disableConcurrentBuilds()
  }
  stages{
@@ -37,7 +36,6 @@ pipeline{
     steps{
     echo "Testing"
     echo "${name}"
-    sleep 10
     }
   }
   stage('Deploy'){
