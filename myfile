@@ -51,8 +51,8 @@ pipeline{
   } */
   stage('Dependabot Security Gate') {
             environment {
-                GITHUB_OWNER = 'daws-86s'
-                GITHUB_REPO  = 'catalogue'
+                GITHUB_OWNER = 'Chakradhar-Jeereddy'
+                GITHUB_REPO  = 'practise'
                 GITHUB_API   = 'https://api.github.com'
                 GITHUB_TOKEN = credentials('GITHUB_TOKEN')
             }
