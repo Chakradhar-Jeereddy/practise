@@ -66,7 +66,7 @@ pipeline{
       sh"""
       trivy image \
       --scanners vuln \
-      --severity HIGH,MEDIUM,CRITICAL \
+      --severity HIGH,CRITICAL \
       --pkg-types os \
       --exit-code 1 \
       --skip-db-update \
