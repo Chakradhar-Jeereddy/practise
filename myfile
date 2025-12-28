@@ -48,7 +48,7 @@ pipeline{
         waitForQualityGate abortPipeline: true
       }
    }
-  }
+  } */
   stage('Dependabot Security Gate') {
             environment {
                 GITHUB_OWNER = 'Chakradhar-Jeereddy'
@@ -97,7 +97,7 @@ pipeline{
                     
                 }
             }
-  } */
+  }
   stage('Build catalogue image'){
     steps{
       withAWS(region:'us-east-1',credentials:'aws-ecr') {
